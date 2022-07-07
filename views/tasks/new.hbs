@@ -1,7 +1,31 @@
 <!-- TODO: render a form to create a new task with a title field -->
 <!-- remember form action and method attributes ;) -->
 
-<form class="form" action="/tasks" method="post">
+{{!-- <form class="form" action="/tasks" method="post">
     <input name="title" placeholder="task title"/>
     <button class="btn btn-primary" type="submit">Create Task</button>
+</form> --}}
+
+<form action="/tasks" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" >Title</label>
+    <input type="text" name="title" class="form-control"  id="title" aria-describedby="emailHelp">
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" >Description</label>
+    <textarea name="description" class="form-control" id="description" ></textarea>
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" >Author</label>
+    <input type="text" name="author" class="form-control" id="author" aria-describedby="emailHelp">
+  </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" >Image</label>
+    <input type="text" name="image" class="form-control" id="image" aria-describedby="emailHelp">
+  </div>
+
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

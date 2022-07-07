@@ -1,0 +1,3 @@
+<p>{{message}}</p>
+{{#if metadata.status}}<p>{{metadata.status}}</p>{{/if}} {{!-- Se hace un if para validar si ese dato existe, si no existe ya no se pinta --}}
+{{#if metadata.stack}}<pre>{{metadata.stack}}</pre>{{/if}}      {{!-- Idem a la línea superior --}}
