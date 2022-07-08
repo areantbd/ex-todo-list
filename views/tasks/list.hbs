@@ -1,20 +1,11 @@
-{{!-- <div class="first-screen">
-  
-  <h1>My tasks</h1>
-  <ul>
-    {{#each tasks as |task|}}
-      <li>
-        <a href="/tasks/{{task.id}}">{{task.title}}</a>
-      </li>
-    {{/each}}
-  </ul>
-
-  <a class="btn btn-primary" href="/tasks/new">New Task</a>
-</div> --}}
-
 <a href="/tasks/new" type="button" class="btn btn-secondary">new task</a>
+<a href="../register/register" type="button" class="btn btn-secondary">register</a>
 
 <hr>
+
+<form action="">
+  <input type="text" class="form-control mb-4" name="author" placeholder="Search..."/>
+</form>
 
 <div class="row">
     {{#each tasks as |task|}}
@@ -24,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{task.title}}</h5>
                     <p class="card-text">{{task.description}}</p>
-                    <p class="card-text">@{{task.author}}</p>
+                    {{!-- <p class="card-text">@{{task.author}}</p> --}}
                     <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
                 </div>
             </div>

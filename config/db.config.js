@@ -1,10 +1,12 @@
+const Task = require('../models/task.model')
 const mongoose = require('mongoose');
  
 mongoose
 .connect('mongodb://localhost/todolist')
 .then(() => console.info("Connected to DB"))
 .catch(() => console.error("Error DB", error))
- 
+
+ /* 
 // When successfully connected
 mongoose.connection.on('connected', () => console.log('Mongoose default connection open'));
  
@@ -20,4 +22,4 @@ process.on('SIGINT', () => {
     console.log('Mongoose default connection disconnected through app termination');
     process.exit(0);
   });
-});
+}); */

@@ -1,12 +1,4 @@
-<!-- TODO: render a form to create a new task with a title field -->
-<!-- remember form action and method attributes ;) -->
-
-{{!-- <form class="form" action="/tasks" method="post">
-    <input name="title" placeholder="task title"/>
-    <button class="btn btn-primary" type="submit">Create Task</button>
-</form> --}}
-
-<form action="/tasks" method="post">
+{{!-- <form action="/tasks" method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label" >Title</label>
     <input type="text" name="title" class="form-control"  id="title" aria-describedby="emailHelp">
@@ -26,6 +18,30 @@
 
 
 
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> --}}
+
+<form action="/tasks" method="POST">
+
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
+    <input type="text" name="title" value="{{ task.title }}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Enter task title..." />
+    {{#if errors.title }}<div class="invalid-feedback">{{ errors.title }}</div>{{/if}}
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fa fa-edit fa-fw"></i></span>
+    <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" aria-label="Task description">{{ task.description}}</textarea>
+    {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+    <input type="text" name="image" value="{{ task.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+      placeholder="Enter task image url..." />
+    {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
+  </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
