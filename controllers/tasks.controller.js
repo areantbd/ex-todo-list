@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Task = require("../models/task.model");
 
 module.exports.list = (req, res, next) => {
@@ -28,22 +28,18 @@ module.exports.create = (req, res, next) => {
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        console.error(error);
-        res.render("tasks/new", { errors: error.errors, task });
+        console.error(error)
+        res.render('tasks/new',  { errors: error.errors, task })
       } else {
-        next(error);
+        next(error)
       }
-    });
+    })
 };
 
 module.exports.delete = (req, res, next) => {
   Task.findByIdAndDelete(req.params.id)
     .then(() => {
-      res.redirect("/tasks");
+      res.redirect("/tasks/new");
     })
-    .catch((error) => next(error));
-};
-
-module.exports.register = (req, res, next) => {
-  res.render("register/register");
+    .catch((error) => next(error))
 };

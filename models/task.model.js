@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   title: {
     type: String,
-    //default: "Prueba",
+    default: "Prueba",
     required: "Title is required",
     minLength: [3, "Title too short, needs mat least 3 chars"],
   },
@@ -31,10 +31,18 @@ const taskSchema = new Schema({
   },
   description: {
     type: String,
-    //default: "Tarjeta de prueba",
+    default: "Tarjeta de prueba",
     minLength: 10,
   },
 });
+
+
+taskSchema.pre('validate', function (next) {
+  this.image = this.image || undefined;
+  this.description = this.description || undefined;
+  next();
+});
+
 
 const Task = mongoose.model("Task", taskSchema);
 
