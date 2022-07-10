@@ -1,24 +1,43 @@
-<a href="/tasks/new" type="button" class="btn btn-secondary">new task</a>
-<a href="../register/register" type="button" class="btn btn-secondary">register</a>
 
-<hr>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/register" type="button" class="btn btn-dark">Register</a>
+  <a href="/login" type="button" class="btn btn-primary">Login</a>
+</div>
+
+<a href="/tasks/new" type="button" class="btn btn-secondary">New task</a>
+
+<hr/>
 
 <form action="">
-  <input type="text" class="form-control mb-4" name="author" placeholder="Search..."/>
+  <input
+    type="text"
+    class="form-control mb-4"
+    name="author"
+    placeholder="Search..."
+  />
 </form>
 
 <div class="row">
-    {{#each tasks as |task|}}
-        <div class="col-3">
-            <div class="card mb-4">
-                <img src="{{task.image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{task.title}}</h5>
-                    <p class="card-text">{{task.description}}</p>
-                    {{!-- <p class="card-text">@{{task.author}}</p> --}}
-                    <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
-                </div>
-            </div>
+  {{#each tasks as |task|}}
+    <div class="col-3">
+      <div class="card mb-4">
+        <img src="{{task.image}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{task.title}}</h5>
+          <p class="card-text">{{task.description}}</p>
+          {{!-- <p class="card-text">@{{task.author}}</p> --}}
+          <div class="row justify-content-center">
+            <a href="tasks/{{task.id}}" class="btn btn-info mb-1">See detail</a>
+            <form class="row" action="/tasks/{{task.id}}/delete" method="post">
+              <button class="btn btn-danger" type="submit">Delete Task</button>
+            </form>
+          </div>
         </div>
-    {{/each}}
+      </div>
+    </div>
+  {{/each}}
 </div>
+
+<form action="/tasks/deleteAll" method="post">
+  <button class="btn btn-danger mb-4" type="submit">Clean All</button>
+</form>

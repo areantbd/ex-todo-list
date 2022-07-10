@@ -5,15 +5,14 @@ const taskSchema = new Schema({
   title: {
     type: String,
     default: "Prueba",
-    required: "Title is required",
-    minLength: [3, "Title too short, needs mat least 3 chars"],
+    //required: "Title is required",
+    minLength: [3, "Title too short, needs at least 3 chars"],
   },
   image: {
     type: String,
-    //default: "https://loremflickr.com/320/240/kitten",
     default: function() {
       if (!this.image) {
-        return 'https://i.imgflip.com/1wqw81.jpg';
+        return "https://loremflickr.com/320/240/random";
       }
       return this.image;
     },
@@ -32,12 +31,13 @@ const taskSchema = new Schema({
   description: {
     type: String,
     default: "Tarjeta de prueba",
-    minLength: 10,
+    minLength: [10, "Description needs at least 3 chars"]
   },
 });
 
 
 taskSchema.pre('validate', function (next) {
+  this.title = this.title || undefined;
   this.image = this.image || undefined;
   this.description = this.description || undefined;
   next();

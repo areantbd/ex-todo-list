@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const Task = require("../models/task.model");
+const { Task } = require("../models");
 
 module.exports.list = (req, res, next) => {
+  //console.log(req.user)
   Task.find()
     .then((tasks) => res.render("tasks/list", { tasks }))
     .catch((error) => next(error));
@@ -39,7 +40,15 @@ module.exports.create = (req, res, next) => {
 module.exports.delete = (req, res, next) => {
   Task.findByIdAndDelete(req.params.id)
     .then(() => {
-      res.redirect("/tasks/new");
+      res.redirect("/tasks");
     })
     .catch((error) => next(error))
 };
+
+module.exports.deleteAll = (req, res, next) => {
+  Task.deleteMany()
+    .then(() => {
+      res.redirect('/tasks')
+    })
+    .catch((error) => next(error))
+}
