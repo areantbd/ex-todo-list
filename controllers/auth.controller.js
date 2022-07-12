@@ -78,7 +78,7 @@ module.exports.viewUsers  = (req, res, next) => {
 module.exports.delete = (req, res, next) => {
   User.findByIdAndDelete(req.params.id)
     .then(() => {
-      res.redirect("/register");
+      res.redirect("/users");
     })
     .catch((error) => next(error))
 };

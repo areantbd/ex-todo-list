@@ -3,14 +3,16 @@
   <a href="/login" type="button" class="btn btn-primary">Login</a>
 </div>
 
-<form action="/auth/deleteAll" method="post">
-  <button class="btn btn-danger mb-4" type="submit">Clean All</button>
-</form>
+<div class="d-grid d-md-flex justify-content-md-start">
+  <form action="/auth/deleteAll" method="post" class="d-grid d-md-flex justify-content-md-start">
+    <button class="btn btn-danger mb-4 mt-2" type="submit">Clean All</button>
+  </form>
+</div>
 
-<div class="row">
+<div class="row d-md-flex justify-content-md-evenly">
 {{#each users as |user|}}
-<div class="col-3 mb-4">
-        <div class="card" style="width: 18rem;">
+<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">{{user.name}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>

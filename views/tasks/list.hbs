@@ -4,8 +4,9 @@
   <a href="/login" type="button" class="btn btn-primary">Login</a>
 </div>
 
-<a href="/tasks/new" type="button" class="btn btn-secondary">New task</a>
-
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+  <a href="/tasks/new" type="button" class="btn btn-secondary mt-2">New task</a>
+</div>
 <hr/>
 
 <form action="">
@@ -19,7 +20,7 @@
 
 <div class="row">
   {{#each tasks as |task|}}
-    <div class="col-3">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-3">
       <div class="card mb-4">
         <img src="{{task.image}}" class="card-img-top" alt="..." />
         <div class="card-body">
