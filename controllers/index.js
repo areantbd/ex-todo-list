@@ -1,5 +1,5 @@
 
 module.exports = {
-    tasks: require('../controllers/tasks.controller'),
-    auth: require('../controllers/auth.controller')
+    tasks: require('./tasks.controller'),
+    auth: require('./auth.controller')
 }

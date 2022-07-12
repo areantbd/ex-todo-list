@@ -1,0 +1,25 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="/register" type="button" class="btn btn-dark">Register</a>
+  <a href="/login" type="button" class="btn btn-primary">Login</a>
+</div>
+
+<form action="/auth/deleteAll" method="post">
+  <button class="btn btn-danger mb-4" type="submit">Clean All</button>
+</form>
+
+<div class="row">
+{{#each users as |user|}}
+<div class="col-3 mb-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{user.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
+                <p class="card-text">{{user.password}}</p>
+                <form class="row" action="/auth/{{user.id}}/delete" method="post">
+                    <button class="btn btn-danger" type="submit">Delete User</button>
+                </form>
+            </div>
+        </div>
+</div>
+{{/each}}
+</div>

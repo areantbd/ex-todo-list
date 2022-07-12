@@ -15,4 +15,8 @@ const { tasks, auth } = require('../controllers')
     router.get('/login', auth.login)
     router.post('/login', auth.doLogin)
 
+    router.get('/users', auth.viewUsers)
+    router.post('/auth/:id/delete', auth.delete)
+    router.post('/auth/deleteAll', auth.deleteAll)
+
 module.exports = router;

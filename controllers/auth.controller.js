@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { User } = require("../models");
+const app = require('express')
 
 module.exports.register = (req, res, next) => {
   res.render("auth/register");
@@ -65,4 +66,27 @@ module.exports.doLogin = (req, res, next) => {
       }
     })
   .catch(error => next(error))
+}
+
+module.exports.viewUsers  = (req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.render('auth/users', { users })
+    })
+}
+
+module.exports.delete = (req, res, next) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect("/register");
+    })
+    .catch((error) => next(error))
+};
+
+module.exports.deleteAll = (req, res, next) => {
+  User.deleteMany()
+    .then(() => {
+      res.redirect('/register')
+    })
+    .catch((error) => next(error))
 }
