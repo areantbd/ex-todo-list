@@ -7,9 +7,11 @@
 <p>{{task.description}}</p>
 
   <div class="detail-buttons">
-    <form action="/tasks/{{task.id}}/delete" method="post">
-      <button class="btn btn-primary btn-danger mb-1" type="submit">Delete Task</button>
-    </form>
+    {{#if currentUser}}
+      <form action="/tasks/{{task.id}}/delete" method="post">
+        <button class="btn btn-primary btn-danger mb-1" type="submit">Delete Task</button>
+      </form>
+    {{/if}}
 
     <a class="btn btn-primary" href="/tasks">Go to list</a>
   </div>

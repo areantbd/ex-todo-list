@@ -3,13 +3,13 @@ const { User } = require("../models");
 const app = require('express')
 
 module.exports.register = (req, res, next) => {
-  res.render("auth/register");
+  res.render("auth/register", { title: 'Register'});
 };
 
 module.exports.doRegister = (req, res, next) => {
 
     function renderWithErrors(errors) {         /* <== ---- FUNCIÓN PARA RENDERIZAR ERRORES EN GENERAL ---------*/
-        res.render("auth/register", {                                       ////RENDERIZO DE NUEVO LA PÁGINA
+        res.status(400).render("auth/register", {                                       ////RENDERIZO DE NUEVO LA PÁGINA
             user: req.body,                                                 ////COMO VALOR TENGO LO QUE EL USUSARIO HA ESCRITO
             errors                                                          ////Y EL MENSAJE DE ERROR
             });
@@ -36,13 +36,13 @@ module.exports.doRegister = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
-    res.render('auth/login')
+    res.render('auth/login', { title: 'Login'})
 }
 
 module.exports.doLogin = (req, res, next) => {
 
   function renderInvalidLogin() {
-    res.render('auth/login', {
+    res.status(400).render('auth/login', {
       user: req.body,
       errors: { password: 'Invalid email or password' }
     })
@@ -71,7 +71,7 @@ module.exports.doLogin = (req, res, next) => {
 module.exports.viewUsers  = (req, res, next) => {
   User.find()
     .then((users) => {
-      res.render('auth/users', { users })
+      res.render('auth/users', { users, title: 'Users' })
     })
 }
 

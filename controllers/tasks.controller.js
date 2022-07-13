@@ -4,20 +4,20 @@ const { Task } = require("../models");
 module.exports.list = (req, res, next) => {
   //console.log(req.user)
   Task.find()
-    .then((tasks) => res.render("tasks/list", { tasks }))
+    .then((tasks) => res.render("tasks/list", { tasks, title: 'Tasks' }))
     .catch((error) => next(error));
 };
 
 module.exports.detail = (req, res, next) => {
   Task.findById(req.params.id)
     .then((task) => {
-      res.render("tasks/detail", { task });
+      res.render("tasks/detail", { task, title: 'Detail' });
     })
     .catch((error) => next(error));
 };
 
 module.exports.new = (req, res, next) => {
-  res.render("tasks/new");
+  res.render("tasks/new", { title: 'New task' });
 };
 
 module.exports.create = (req, res, next) => {
@@ -30,7 +30,7 @@ module.exports.create = (req, res, next) => {
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         console.error(error)
-        res.render('tasks/new',  { errors: error.errors, task })
+        res.render('tasks/new',  { errors: error.errors, task})
       } else {
         next(error)
       }
