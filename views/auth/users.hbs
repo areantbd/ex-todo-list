@@ -15,6 +15,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">{{user.name}}</h5>
+                <p class="card-text">admin: {{user.admin}}</p>
                 <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
                 <p class="card-text">{{user.password}}</p>
                 <form class="row" action="/auth/{{user.id}}/delete" method="post">

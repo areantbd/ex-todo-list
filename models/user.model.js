@@ -27,6 +27,9 @@ const userSchema = new Schema({
     required: "Password is required",
     match: [PWD_PATTERN, "Password needs at least 8 chars"],
   },
+  admin: {
+    type: Boolean,
+  }
 });
 
 

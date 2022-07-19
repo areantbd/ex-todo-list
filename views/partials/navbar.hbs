@@ -1,5 +1,14 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1"><a href="/tasks" class="nav-bar-a" >{{#if currentUser}}{{currentUser.name}}'s{{/if}} To-Do list </a></span>
+    <span class="navbar-brand mb-0 h5"><a href="/tasks" class="nav-bar-a" >{{#if currentUser}}{{currentUser.name}}'s{{/if}} To-Do list </a></span>
+  <h4 style="color: red">
+    {{#if currentUser.admin}}
+    Admin mode
+    {{/if}}
+  </h4>
   </div>
+  
+
+  
 </nav>
+

@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 const { Task } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  //console.log(req.user)
-  Task.find()
+  const criteria = {}
+
+  if (!req.user.admin) {
+    criteria.author = req.user.id
+  }
+  Task.find(criteria)
+    .populate('author')
     .then((tasks) => res.render("tasks/list", { tasks, title: 'Tasks' }))
     .catch((error) => next(error));
 };
@@ -21,7 +26,10 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-  const task = req.body;
+  const task = {
+    ...req.body,
+    author: req.user.id
+  }
 
   Task.create(task)
     .then((task) => {

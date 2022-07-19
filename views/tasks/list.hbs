@@ -1,7 +1,11 @@
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <a href="/register" type="button" class="btn btn-dark">Register</a>
+  {{#if currentUser}}  
+  <a href="/login" type="button" class="btn btn-danger">Log-out</a>
+  {{else}}
   <a href="/login" type="button" class="btn btn-primary">Login</a>
+  {{/if}}
 </div>
 
 {{#if currentUser}}
@@ -11,14 +15,14 @@
 {{/if}}
 <hr/>
 
-<form action="">
+{{!-- <form action="">
   <input
     type="text"
     class="form-control mb-4"
     name="author"
     placeholder="Search..."
   />
-</form>
+</form> --}}
 
 <div class="row">
   {{#each tasks as |task|}}
@@ -28,15 +32,13 @@
         <div class="card-body">
           <h5 class="card-title">{{task.title}}</h5>
           <p class="card-text">{{task.description}}</p>
-          {{!-- <p class="card-text">@{{task.author}}</p> --}}
+          <p class="card-text">@{{task.author.name}}</p>
           <div class="row justify-content-center">
             <a href="tasks/{{task.id}}" class="btn btn-info mb-1">See detail</a>
-
-            {{#if ...currentUser}}
+            
               <form class="row" action="/tasks/{{task.id}}/delete" method="post">
                 <button class="btn btn-danger" type="submit">Delete Task</button>
-              </form>
-            {{/if}}
+              </form>            
             
           </div>
         </div>
@@ -45,7 +47,7 @@
   {{/each}}
 </div>
 
-{{#if currentUser}}
+{{#if currentUser.admin}}
   <form action="/tasks/deleteAll" method="post">
     <button class="btn btn-danger mb-4" type="submit">Clean All</button>
   </form>
